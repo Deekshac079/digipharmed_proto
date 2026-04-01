@@ -1,0 +1,39 @@
+.hoi-table-wrap { overflow-x: auto; }
+.hoi-table {
+  width: 100%; border-collapse: collapse; min-width: 760px;
+}
+.hoi-table th {
+  padding: 9px 14px;
+  font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text3); background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  text-align: left; white-space: nowrap;
+}
+.hoi-table td {
+  padding: 12px 14px;
+  font-size: 12.5px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: middle;
+}
+.hoi-table tr:last-child td { border-bottom: none; }
+.hoi-table tr:hover td      { background: #fafaf8; }
+
+.faculty-name    { font-weight: 600; color: var(--text); font-size: 13px; }
+.faculty-council { font-size: 11px; color: var(--text3); font-family: var(--mono); margin-top: 1px; }
+.cell-mono { font-family: var(--mono); }
+.cell-sm   { font-size: 12px; }
+.qual-ok   { color: var(--green); font-size: 13px; font-weight: 700; }
+.flex-row  { display: flex; align-items: center; }
+.gap-4     { gap: 4px; }
+
+.hoi-empty {
+  padding: 36px 20px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.hoi-empty-icon { font-size: 28px; }
+.hoi-empty-text {
+  font-size: 13px; color: var(--text2); max-width: 360px; line-height: 1.5;
+}

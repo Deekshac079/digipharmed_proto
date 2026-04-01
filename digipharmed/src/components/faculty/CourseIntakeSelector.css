@@ -1,0 +1,38 @@
+.context-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.ctx-label {
+  font-size: 11.5px; font-weight: 600; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap;
+}
+.course-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.course-tab {
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 12.5px; font-weight: 500;
+  border: 1px solid var(--border2);
+  background: var(--surface2); color: var(--text2);
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+  font-family: var(--font);
+}
+.course-tab:hover { border-color: var(--accent); color: var(--accent); }
+.course-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+.divider-v { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+
+.intake-toggle {
+  display: flex; border: 1px solid var(--border2);
+  border-radius: var(--radius-sm); overflow: hidden;
+}
+.intake-btn {
+  padding: 6px 12px; font-size: 12px; font-weight: 500;
+  background: var(--surface2); color: var(--text2);
+  cursor: pointer; border: none; transition: all .15s;
+  font-family: var(--font);
+}
+.intake-btn:hover { background: var(--accent-lt); color: var(--accent); }
+.intake-btn.active { background: var(--accent); color: white; }

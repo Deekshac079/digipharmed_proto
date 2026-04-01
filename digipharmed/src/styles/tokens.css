@@ -1,0 +1,52 @@
+/* ─── Design tokens ─────────────────────────────────────────────────────── */
+:root {
+  --bg:        #f4f3ef;
+  --surface:   #ffffff;
+  --surface2:  #f9f8f5;
+  --border:    #e2e0d8;
+  --border2:   #ccc9be;
+  --text:      #1a1916;
+  --text2:     #5a5850;
+  --text3:     #8a877e;
+  --accent:    #1a4f8a;
+  --accent-lt: #e8f0fa;
+  --accent-md: #c5d8f5;
+  --green:     #1b6b42;
+  --green-lt:  #e8f5ee;
+  --amber:     #7a4d00;
+  --amber-lt:  #fef3da;
+  --red:       #911111;
+  --red-lt:    #fef0f0;
+  --radius:    10px;
+  --radius-sm: 6px;
+  --shadow:    0 1px 3px rgba(0,0,0,.07), 0 4px 12px rgba(0,0,0,.04);
+  --font:      'Inter', system-ui, sans-serif;
+  --mono:      'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* ─── Utility classes ────────────────────────────────────────────────────── */
+.flex-center    { display: flex; align-items: center; gap: 8px; }
+.ml-auto        { margin-left: auto; }
+.text-muted     { color: var(--text3); }
+.text-sm        { font-size: 11.5px; }
+.text-mono      { font-family: var(--mono); }
+.hidden         { display: none !important; }
+.overflow-x     { overflow-x: auto; }

@@ -1,0 +1,23 @@
+.compliance-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  display: flex; align-items: center;
+}
+.comp-stat {
+  flex: 1; text-align: center;
+  padding: 0 16px;
+  border-right: 1px solid var(--border);
+}
+.comp-stat:last-child { border-right: none; }
+.comp-val {
+  font-size: 22px; font-weight: 700; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 2px;
+}
+.comp-lbl { font-size: 11px; color: var(--text3); font-weight: 500; }
+.comp-blue  { color: var(--accent); }
+.comp-green { color: var(--green); }
+.comp-amber { color: var(--amber); }
+.comp-red   { color: var(--red); }

@@ -1,0 +1,6 @@
+.faculty-page {
+  padding: 24px 28px;
+  flex: 1;
+  overflow-y: auto;
+  max-width: 1400px;
+}

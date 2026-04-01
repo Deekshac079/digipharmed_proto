@@ -1,0 +1,27 @@
+.infra-compliance-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 0;
+}
+.infra-comp-stat {
+  flex: 0 0 140px;
+  text-align: center;
+  padding: 0 16px;
+  border-right: 1px solid var(--border);
+}
+.infra-comp-val  { font-size: 22px; font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 2px; }
+.infra-comp-lbl  { font-size: 11px; color: var(--text3); font-weight: 500; }
+.infra-comp-blue  { color: var(--accent); }
+.infra-comp-green { color: var(--green); }
+.infra-comp-amber { color: var(--amber); }
+.infra-comp-red   { color: var(--red); }
+
+.infra-comp-action {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  padding-left: 20px;
+}
+.infra-comp-hint { font-size: 11.5px; color: var(--text3); text-align: right; }

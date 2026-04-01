@@ -1,0 +1,92 @@
+/* ─── Rooms table ─────────────────────────────────────────────────────────── */
+.rooms-header {
+  display: grid;
+  grid-template-columns: 2fr 120px 110px 80px 140px 1fr;
+  padding: 8px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  gap: 0;
+}
+.rooms-header span {
+  font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3);
+}
+
+.rooms-row {
+  display: grid;
+  grid-template-columns: 2fr 120px 110px 80px 140px 1fr;
+  border-bottom: 1px solid var(--border);
+  gap: 0;
+  transition: background .1s;
+}
+.rooms-row:last-child { border-bottom: none; }
+.rooms-row:hover { background: #fafaf8; }
+.rooms-row.row-missing { background: #fff9f9; }
+
+.room-cell {
+  padding: 10px 16px;
+  display: flex; flex-direction: column; justify-content: center; gap: 3px;
+  border-right: 1px solid var(--border);
+  font-size: 12.5px;
+}
+.room-cell:last-child { border-right: none; }
+.cell-label { gap: 4px; }
+
+.room-name  { font-weight: 600; color: var(--text); font-size: 12.5px; }
+.room-note  { font-size: 10.5px; color: var(--text3); line-height: 1.4; }
+.cond-badge {
+  font-size: 9.5px; font-weight: 600; padding: 1px 5px; border-radius: 3px;
+  background: var(--amber-lt); color: var(--amber); width: fit-content;
+}
+
+.req-pill {
+  font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 20px;
+  background: var(--accent-lt); color: var(--accent); width: fit-content;
+}
+.ref-tag { font-size: 9.5px; color: var(--text3); font-family: var(--mono); }
+
+.room-input {
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  padding: 5px 8px;
+  font-size: 12.5px; font-family: var(--font);
+  color: var(--text); background: var(--surface2);
+  transition: border-color .15s; width: 100%;
+}
+.room-input:focus { outline: none; border-color: var(--accent); background: var(--surface); }
+.room-input-sm   { max-width: 60px; }
+.room-input-full { width: 100%; }
+.area-warn { font-size: 10px; color: var(--red); font-weight: 600; margin-top: 2px; }
+
+/* ─── Availability toggle ────────────────────────────────────────────────── */
+.avail-toggle { display: flex; gap: 4px; }
+.avail-compact .avail-btn { padding: 3px 8px; font-size: 10.5px; }
+
+.avail-btn {
+  padding: 5px 10px; border-radius: var(--radius-sm); font-size: 11.5px; font-weight: 600;
+  border: 1px solid var(--border2); background: var(--surface2); color: var(--text2);
+  cursor: pointer; transition: all .12s; font-family: var(--font);
+}
+.avail-btn:hover { border-color: var(--text2); }
+.avail-yes { background: var(--green-lt); color: var(--green); border-color: #a8d4b8; }
+.avail-no  { background: var(--red-lt);   color: var(--red);   border-color: #f5b8b8; }
+
+/* ─── Fittings grid ──────────────────────────────────────────────────────── */
+.fittings-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; padding: 16px 20px;
+}
+.fitting-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  background: var(--surface2);
+  display: flex; flex-direction: column; gap: 8px;
+  transition: border-color .15s;
+}
+.fitting-card:hover    { border-color: var(--accent); }
+.fitting-ok.fitting-card { border-color: #a8d4b8; background: var(--green-lt); }
+.fitting-missing.fitting-card { border-color: #f5b8b8; background: var(--red-lt); }
+
+.fitting-name { font-size: 12.5px; font-weight: 600; color: var(--text); }
+.fitting-ref  { font-size: 10px; color: var(--text3); font-family: var(--mono); }
