@@ -58,11 +58,11 @@ export function TopBar({ activePage = 'faculty', lastSaved, onSaveDraft, onPrima
           <span className="save-hint">Last saved: {lastSaved}</span>
         )}
         <Button variant="ghost" onClick={onSaveDraft}>Save Draft</Button>
-        {meta.hasPrimary && (
+        {/* {meta.hasPrimary && (
           <Button variant="primary" onClick={onPrimaryAction}>
             {meta.primaryLabel}
           </Button>
-        )}
+        )} */}
       </div>
     </header>
   );

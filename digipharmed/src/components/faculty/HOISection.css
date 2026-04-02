@@ -20,8 +20,52 @@
 .hoi-table tr:last-child td { border-bottom: none; }
 .hoi-table tr:hover td      { background: #fafaf8; }
 
+.photo-column {
+  width: 70px;
+  padding: 12px 8px !important;
+  text-align: center;
+}
+
 .faculty-name    { font-weight: 600; color: var(--text); font-size: 13px; }
 .faculty-council { font-size: 11px; color: var(--text3); font-family: var(--mono); margin-top: 1px; }
+
+.faculty-photo-container {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.faculty-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.faculty-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8ecf1 100%);
+}
+
+.faculty-photo-placeholder svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+
 .cell-mono { font-family: var(--mono); }
 .cell-sm   { font-size: 12px; }
 .qual-ok   { color: var(--green); font-size: 13px; font-weight: 700; }

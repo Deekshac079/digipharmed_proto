@@ -78,7 +78,9 @@ export function FacultyPage() {
         requirements={store.requirements}
         slotCounts={store.slotCounts}
         intake={store.intake}
+        faculty={store.filteredFaculty}
         onAddClick={openDrawer}
+        onEdit={store.updateFaculty}
       />
 
       {/* Faculty roster */}

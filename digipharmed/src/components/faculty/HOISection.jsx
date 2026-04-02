@@ -21,6 +21,7 @@ export function HOISection({ faculty, onEdit, onAddClick }) {
           <table className="hoi-table">
             <thead>
               <tr>
+                <th>Photo</th>
                 <th>Faculty name</th>
                 <th>Council no.</th>
                 <th>Qualification</th>
@@ -33,6 +34,26 @@ export function HOISection({ faculty, onEdit, onAddClick }) {
             </thead>
             <tbody>
               <tr>
+                <td className="photo-column">
+                  <div className="faculty-photo-container">
+                    {hoi.profilePhoto ? (
+                      <img
+                        src={typeof hoi.profilePhoto === 'string' ? hoi.profilePhoto : URL.createObjectURL(hoi.profilePhoto)}
+                        alt={hoi.name}
+                        className="faculty-photo"
+                        onError={(e) => {
+                          e.target.src = '/assets/images/image.png';
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src="/assets/images/image.png"
+                        alt={hoi.name}
+                        className="faculty-photo"
+                      />
+                    )}
+                  </div>
+                </td>
                 <td>
                   <div className="faculty-name">{hoi.name}</div>
                   <div className="faculty-council">{hoi.councilNo}</div>
@@ -60,11 +81,11 @@ export function HOISection({ faculty, onEdit, onAddClick }) {
                     {hoi.status === 'verified' ? 'Verified' : 'Review'}
                   </SlotBadge>
                 </td>
-                <td>
+                {/* <td>
                   <Button size="sm" variant="ghost" onClick={() => onEdit(hoi.id, {})}>
                     Edit
                   </Button>
-                </td>
+                </td> */}
               </tr>
             </tbody>
           </table>

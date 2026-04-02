@@ -1,0 +1,19 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="fileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fde68a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#fileGradient)"/>
+  
+  <!-- File icon -->
+  <path d="M 120 30 L 150 30 L 150 60 L 120 60 Z" fill="#f59e0b" opacity="0.3"/>
+  <path d="M 50 30 Q 40 30 40 40 L 40 160 Q 40 170 50 170 L 150 170 Q 160 170 160 160 L 160 60 L 120 30 Z" 
+        fill="none" stroke="#d97706" stroke-width="3" stroke-linejoin="round"/>
+  
+  <!-- Plus sign (for upload) -->
+  <line x1="100" y1="90" x2="100" y2="140" stroke="#92400e" stroke-width="3" stroke-linecap="round"/>
+  <line x1="75" y1="115" x2="125" y2="115" stroke="#92400e" stroke-width="3" stroke-linecap="round"/>
+</svg>

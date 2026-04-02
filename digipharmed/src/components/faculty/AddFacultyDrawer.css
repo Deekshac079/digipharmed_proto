@@ -1,103 +1,526 @@
-/* ─── Overlay ───────────────────────────────────────────────────────────── */
+/* ── CSS Variables ────────────────────────────────────────────────── */
+:root {
+  --primary-color: #3b82f6;
+  --primary-light: rgba(59, 130, 246, 0.1);
+  --primary-dark: #1e40af;
+  --danger-color: #ef4444;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  --border-color: #e5e7eb;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: -2px 0 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --transition: all 0.3s ease-in-out;
+}
+
+/* ── Drawer Overlay ────────────────────────────────────────────────── */
 .drawer-overlay {
-  position: fixed; inset: 0; z-index: 100;
-  background: rgba(10, 10, 8, .4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  animation: fadeIn 0.2s ease-in-out;
 }
 
-/* ─── Drawer panel ──────────────────────────────────────────────────────── */
+/* ── Drawer Container ────────────────────────────────────────────────── */
 .add-drawer {
-  position: fixed; right: 0; top: 0; bottom: 0;
-  width: 480px; z-index: 101;
-  background: var(--surface);
-  border-left: 1px solid var(--border);
-  box-shadow: -8px 0 40px rgba(0, 0, 0, .12);
-  display: flex; flex-direction: column;
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
   transform: translateX(100%);
-  transition: transform .22s cubic-bezier(.4,0,.2,1);
+  transition: transform 0.3s ease-in-out;
 }
-.add-drawer.drawer-open { transform: translateX(0); }
 
-/* ─── Header ────────────────────────────────────────────────────────────── */
-.drawer-header {
-  padding: 18px 22px;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-  flex-shrink: 0;
+.add-drawer.drawer-open {
+  transform: translateX(0);
 }
-.drawer-title { font-size: 15px; font-weight: 700; color: var(--text); }
+
+/* ── Drawer Header ────────────────────────────────────────────────── */
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+.drawer-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
 
 .close-btn {
-  width: 28px; height: 28px; border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--surface2); cursor: pointer;
-  font-size: 14px; line-height: 1;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text3); transition: all .12s; font-family: var(--font);
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  flex-shrink: 0;
 }
-.close-btn:hover { background: var(--red-lt); color: var(--red); border-color: var(--red); }
 
-/* ─── Body ──────────────────────────────────────────────────────────────── */
+.close-btn:hover {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+.close-btn:active {
+  transform: scale(0.95);
+}
+
+/* ── Drawer Body ────────────────────────────────────────────────── */
 .drawer-body {
-  padding: 20px 22px;
-  flex: 1; overflow-y: auto;
-  display: flex; flex-direction: column; gap: 14px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 24px;
 }
 
-/* ─── Qual info box ─────────────────────────────────────────────────────── */
-.qual-info-box {
-  background: var(--accent-lt);
-  border: 1px solid var(--accent-md);
+.drawer-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.drawer-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drawer-body::-webkit-scrollbar-thumb {
+  background: var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  display: flex; flex-direction: column; gap: 4px;
-}
-.qual-info-row {
-  display: flex; gap: 8px; font-size: 11.5px; line-height: 1.5;
-}
-.qual-info-row strong {
-  font-weight: 700; color: var(--accent); min-width: 36px; flex-shrink: 0;
-}
-.qual-info-row span { color: var(--text2); }
-.qual-info-ref {
-  font-size: 10.5px; color: var(--accent); opacity: .7;
-  font-family: var(--mono); margin-top: 4px;
-  border-top: 1px solid var(--accent-md); padding-top: 6px;
 }
 
-/* ─── Form layout ───────────────────────────────────────────────────────── */
-.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.form-field { display: flex; flex-direction: column; gap: 5px; }
+.drawer-body::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ── Form Container ────────────────────────────────────────────────── */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Form Field ────────────────────────────────────────────────── */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.form-field:last-child {
+  margin-bottom: 0;
+}
+
+.form-label-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
 
 .form-label {
-  font-size: 11.5px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.06em;
-  color: var(--text2);
-  display: flex; align-items: center; gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-.req-star { color: var(--red); font-size: 13px; font-weight: 400; }
-.reg-ref-badge {
-  font-size: 10px; font-weight: 500;
-  background: var(--accent-lt); color: var(--accent);
-  padding: 1px 5px; border-radius: 3px;
-  margin-left: auto;
+
+.req-star {
+  color: var(--danger-color);
+  font-weight: 900;
 }
 
 .form-input {
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
-  font-size: 13px; font-family: var(--font);
-  color: var(--text); background: var(--surface2);
-  transition: border-color .15s; width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: var(--transition);
+  min-height: 40px;
+  margin-bottom: 4px;
 }
-.form-input:focus { outline: none; border-color: var(--accent); background: var(--surface); }
 
-.form-hint { font-size: 11px; color: var(--text3); line-height: 1.5; }
+.form-input::placeholder {
+  color: var(--text-tertiary);
+}
 
-/* ─── Footer ────────────────────────────────────────────────────────────── */
+.form-input:hover {
+  border-color: #bfdbfe;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.form-input:disabled {
+  background-color: var(--bg-tertiary);
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+  border-color: var(--border-color);
+}
+
+.form-input[type="file"] {
+  padding: 10px 14px;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.form-input[type="file"]::file-selector-button {
+  padding: 6px 12px;
+  margin-right: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.form-input[type="file"]::file-selector-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.form-input[type="date"] {
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.form-hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.form-error {
+  font-size: 12px;
+  color: var(--danger-color);
+  line-height: 1.5;
+  margin-top: 0;
+  padding-left: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: slideUp 0.2s ease-in-out;
+}
+
+.form-error::before {
+  content: '⚠';
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* ── Form Row (2 columns) ────────────────────────────────────────────────── */
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+/* ── Form Section ────────────────────────────────────────────────── */
+.form-section {
+  padding-top: 24px;
+  padding-bottom: 12px;
+  border-top: 1px solid var(--border-color);
+  margin-bottom: 8px;
+}
+
+.form-section:first-child {
+  padding-top: 0;
+  border-top: none;
+  margin-bottom: 0;
+}
+
+.form-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-section-title::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* ── Select Field ────────────────────────────────────────────────── */
+.form-select {
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+  transition: var(--transition);
+  appearance: none;
+  min-height: 40px;
+  margin-bottom: 4px;
+}
+
+.form-select:hover {
+  border-color: #bfdbfe;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* ── Checkbox Field ────────────────────────────────────────────────── */
+.checkbox-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.checkbox-field:hover {
+  border-color: #bfdbfe;
+  background-color: #f0f8ff;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 3px;
+  cursor: pointer;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  accent-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.checkbox-field input[type="checkbox"]:hover {
+  border-color: var(--primary-color);
+}
+
+.checkbox-field input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.checkbox-label {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ── Drawer Footer ────────────────────────────────────────────────── */
 .drawer-footer {
-  padding: 14px 22px;
-  border-top: 1px solid var(--border);
-  display: flex; gap: 10px; flex-shrink: 0;
+  padding: 20px 24px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  padding: 11px 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--border-color);
+  border-color: var(--text-secondary);
+}
+
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* ── Animations ────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .add-drawer {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-drawer {
+    width: 100%;
+  }
+
+  .drawer-header {
+    padding: 20px;
+  }
+
+  .drawer-body {
+    padding: 24px 20px;
+  }
+
+  .drawer-footer {
+    padding: 16px 20px;
+  }
+
+  .form-row-2,
+  .form-row-3 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .form-label {
+    font-size: 11px;
+  }
+
+  .drawer-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .close-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .drawer-header {
+    padding: 16px;
+  }
+
+  .form-hint {
+    font-size: 11px;
+  }
+
+  .btn {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}
+
+/* ── Input Error State ────────────────────────────────────────────────── */
+.form-input.input-error,
+.form-select.input-error {
+  border-color: var(--danger-color);
+  background-color: rgba(239, 68, 68, 0.02);
+}
+
+.form-input.input-error:focus,
+.form-select.input-error:focus {
+  border-color: var(--danger-color);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
